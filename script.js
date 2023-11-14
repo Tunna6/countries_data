@@ -14,38 +14,72 @@
 //  const p = document.createElement('p')
 //  console.log(p);
 
-countries_data.forEach((ülke) => {
-    console.log(ülke);
-    const div = document.createElement('div')
-    div.classList.add('card')
-    div.style.width = '25rem'
+function ülkeler() {
+    const container = document.createElement('div')
+    container.classList.add('container')
+    // container.style.display = 'none'
 
-    const img = document.createElement('img')
-    img.src = ülke.flag
-    img.classList.add('card-img-top')
+    document.body.append(container)
 
-    const div2 = document.createElement('div')
-    div2.classList.add('card-body')
+    const row = document.createElement('div')
+    row.setAttribute('class', 'row mt-3')
+    container.append(row)
 
-    const h5 = document.createElement('h5')
-    h5.classList.add('card-title')
-    h5.textContent = ülke.name
+    //***************** */
+    countries_data.forEach((ülke) => {
+        console.log(ülke);
 
-    const p = document.createElement('p')
-    p.classList.add('card-text')
-    p.textContent = `${ülke.capital} - ${ülke.languages} - ${ülke.region}`
-
-    const a = document.createElement('a')
-    a.setAttribute('class', 'btn btn-warning')
-    a.textContent = ülke.population
-
-    div2.append(h5)
-    div2.append(p)
-    div2.append(a)
-
-    div.append(img)
-    div.append(div2)
+        const col = document.createElement('div')
+        col.classList.add('col-4')
 
 
-    document.body.append(div)
-});
+        //************** */
+
+        const div = document.createElement('div')
+        div.classList.add('card')
+        div.style.width = '25rem'
+
+
+        const img = document.createElement('img')
+        img.src = ülke.flag
+        img.classList.add('card-img-top')
+
+        const div2 = document.createElement('div')
+        div2.classList.add('card-body')
+
+        const h5 = document.createElement('h5')
+        h5.classList.add('card-title')
+        h5.textContent = ülke.name
+
+        const p = document.createElement('p')
+        p.classList.add('card-text')
+        p.textContent = `${ülke.capital} - ${ülke.languages} - ${ülke.region}`
+
+        const a = document.createElement('a')
+        a.setAttribute('class', 'btn btn-warning')
+        a.textContent = ülke.population
+
+        div2.append(h5)
+        div2.append(p)
+        div2.append(a)
+
+        div.append(img)
+        div.append(div2)
+
+
+        col.append(div)
+        row.append(col)
+    });
+}
+
+const btn = document.createElement('buton')
+btn.setAttribute('class', 'btn btn-dark')
+btn.textContent = 'ülkeler'
+
+document.body.append(btn)
+// ülkeler()
+
+btn.addEventListener('click', ülkeler)
+// btn.addEventListener('click', () =>{
+//     container.classList.toggle('show')
+// })
